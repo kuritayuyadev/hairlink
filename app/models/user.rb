@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
+  def feed
+    # このコードは準備段階です。
+    #     # 完全な実装は第11章「ユーザーをフォローする」を参照してください。
+    Micropost.where("user_id = ?", id)
+  end
+
+
+
   private
 
   def create_remember_token
